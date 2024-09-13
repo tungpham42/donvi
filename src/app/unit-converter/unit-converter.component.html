@@ -1,0 +1,65 @@
+<div class="container mt-5">
+  <h2 class="text-center">Công Cụ Chuyển Đổi Đơn Vị</h2>
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="category">Danh Mục</label>
+        <select
+          id="category"
+          class="form-control my-2"
+          [(ngModel)]="category"
+          (change)="onCategoryChange()"
+        >
+          <option *ngFor="let cat of categories" [value]="cat">
+            {{ cat }}
+          </option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="inputValue">Giá Trị</label>
+        <input
+          type="number"
+          id="inputValue"
+          class="form-control my-2"
+          [(ngModel)]="inputValue"
+          placeholder="Nhập giá trị"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="inputUnit">Từ Đơn Vị</label>
+        <select
+          id="inputUnit"
+          class="form-control my-2"
+          [(ngModel)]="inputUnit"
+        >
+          <option *ngFor="let unit of currentUnits" [value]="unit">
+            {{ unit }}
+          </option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="outputUnit">Đến Đơn Vị</label>
+        <select
+          id="outputUnit"
+          class="form-control my-2"
+          [(ngModel)]="outputUnit"
+        >
+          <option *ngFor="let unit of currentUnits" [value]="unit">
+            {{ unit }}
+          </option>
+        </select>
+      </div>
+
+      <button class="btn btn-primary mt-3" (click)="convert()">
+        Chuyển Đổi
+      </button>
+
+      <div class="alert alert-info mt-3" *ngIf="convertedValue !== null">
+        Giá Trị Sau Chuyển Đổi: {{ convertedValue }}
+      </div>
+    </div>
+  </div>
+</div>
